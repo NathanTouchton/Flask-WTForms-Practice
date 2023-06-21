@@ -7,9 +7,9 @@ app = Flask(__name__)
 app.secret_key = "xH%o%8TZmfZ!bs7dWz"
 
 class MyForm(FlaskForm):
-    username = StringField("Email", validators=[DataRequired()])
-    password = PasswordField("Password", validators=[DataRequired()])
-    submit = SubmitField("Submit")
+    username = StringField(label="Email", validators=[DataRequired()])
+    password = PasswordField(label="Password", validators=[DataRequired()])
+    submit = SubmitField(label="Submit")
 
 @app.route("/")
 def home():

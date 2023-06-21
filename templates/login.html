@@ -9,9 +9,14 @@
     <div class="container">
         <h1>Login</h1>
         <!-- This is where our form will go. -->
-        <h3>{{form.username.label}} {{form.username()}}</h3>
-        <h3>{{form.password.label}} {{form.password()}}</h3>
-        <h1>{{form.submit}}</h1>
+        <div>{{form.username.label}}: <br> {{form.username()}}</div>
+        {% if form.username.errors %}
+        <ul class="errors">
+            <!-- continue here with the for loop from the documentation.  -->
+        </ul>
+        {% endif %}
+        <div>{{form.password.label}}: <br> {{form.password()}}</div>
+        <div>{{form.submit}}</div>
     </div>
     <h1></h1>
 </body>
