@@ -9,14 +9,28 @@
     <div class="container">
         <h1>Login</h1>
         <!-- This is where our form will go. -->
-        <div>{{form.username.label}}: <br> {{form.username()}}</div>
-        {% if form.username.errors %}
-        <ul class="errors">
-            <!-- continue here with the for loop from the documentation.  -->
-        </ul>
-        {% endif %}
-        <div>{{form.password.label}}: <br> {{form.password()}}</div>
-        <div>{{form.submit}}</div>
+        <form method="POST" action="{{ url_for('login') }}" novalidate>
+            <!-- I need to figure out why this form is failing instantly. -->
+            {{ form.csrf_token }}
+            <div>{{form.username.label}}: <br> {{form.username()}}</div>
+            {% if form.username.errors %}
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div>{{form.password.label}}: <br> {{form.password()}}</div>
+            {% if form.password.errors %}
+                <ul class="errors">
+                    {% for error in form.username.errors %}
+                        <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            <div>{{form.submit}}</div>
+        </form>
     </div>
     <h1></h1>
 </body>
